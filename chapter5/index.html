@@ -13,7 +13,9 @@
 
     <!-- <div><b>Paper:</b> <a href="https://www.baidu.com">arXiv</a> <a href="http://www.baidu.com">ICASSP 2019</a></div> -->
     <div><b>Authors:</b> Xiaolian Zhu, Yuchao Zhang, Shan Yang, Liumeng Xue, Lei Xie</div>
-    <!-- <div><b>Abstract:</b> The state-of-the-art, end-to-end TTS training, which can predict speech directly from a given sequence of graphemes or phonemes,  has shown improved performance over the conventional TTS approach. However, its predicting capability is limited by the acoustic/phonetic coverage and the amount of the training data. The synthesized speech quality in its pronunciation, break and prosody, can still be further improved. We propose to enhance the TTS performance by exploiting the information embedded in a syntactically parsed tree which can capture the inter-phrase/word information encoded in a sentence. With words grouped in a multi-layered syntactic tree, we investigate two key linguistic features in such a structure, i.e., the phrase structure and the relations between adjacent words. Results of subjective assessment in quality test, measured on three test sentence sets, show that the proposed approach is effective to generalize the prediction capability of the end-to-end TTS and to improve the corresponding intelligibility, naturalness and prosody of the synthesized speech.</div> -->
+    <div><b>Abstract:</b> Recently, end-to-end (E2E) neural text-to-speech systems, such as Tacotron2, have begun to surpass the traditional multi-stage hand-engineered systems, with both simplified system building pipelines and high quality speech. With a unique encoder-decoder neural structure, the Tacotron2 system no longer needs
+separately learned text analysis front-end, duration model, acoustic model and audio synthesis module. The key of such system lies in the attention mechanism, which learns an alignment between the encoder and the decoder, serving as an implicit duration model bridging the text sequence and the acoustic sequence. However, attention learning suffers from low training efficiency and model instability problems, which hinder the E2E approaches from wide deployment. In this paper, we address the problems and propose a novel pre-alignment guided attention learning approach. Specifically, we inject handy prior knowledge – accurate phoneme durations – in the neural network loss function to bias the attention learning to the desired direction more accurately. The explicit time alignment between an audio recording and its corresponding phoneme sequence can be achieved by forced-alignment from an automatic speech recognizer (ASR). Experiments show that the proposed pre-alignment guided (PAG) attention approach can significantly improve training efficiency and model stability. More specifically, the PAG updated version of Tacotron2 can quickly obtain the attention alignment using only 500 htext, audioi pairs, which is apparently not possible for the original Tacotron2. A series of subjective experiments also show that the PAG-Tacotron2 approach
+can synthesize more stable and natural speech.</div>
 	
 	<div><p></p><font size="3" color="red">Note: These samples are synthesized from Mel-spectrum by Griffin-Lim algorithm. We just need to pay attention to prosody because this work has no relation with sound quality basically. </font></div>
 
@@ -136,6 +138,16 @@
         <tr><td><audio controls><source src="audios_samples/soft/A_T10_29.wav"></audio><audio controls><source src="audios_samples/diagonal/A_T10_29.wav"></audio><audio controls><source src="audios_samples/guided/A_T10_29.wav"></audio><p></p></td></tr>
       </table>
     </div>
+
+      <div>
+      <h3>Synthesized long utterance (Left: Tacotron2, Mid: DIG-Tactoron2, Right: PAG-Tacotron2)<p></p></h3>
+      <table>
+        <tr><td class="transcript">“《悲惨世界》是由法国作家维克多·雨果在1862年发表的一部长篇小说，其内容涵盖了拿破仑战争和之后的十几年的时间。
+故事的主线围绕主人公土伦苦刑犯冉·阿让的个人经历，融进了法国的历史、革命、战争、道德哲学、法律、正义、宗教信仰。该作多次被改编演绎成影视作品。主人公冉·阿让原是个诚实的工人，一直帮助穷困的姐姐抚养七个可怜的孩子。有一年冬天，他找不到工作，为了不让孩子饿死，他只得去偷了一块面包，因此被判处五年。”<p></p></td></tr>
+        <tr><td><audio controls><source src="audios_samples/long_para/soft.wav"></audio><audio controls><source src="audios_samples/long_para/diagonal.wav"></audio><audio controls><source src="audios_samples/long_para/guided.wav"></audio><p></p></td></tr>
+      </table>
+      </div>
+
 
    <div>
       <h3>Analysis of prosody(Left: Tacotron2, Mid: DIG-Tactoron2, Right: PAG-Tacotron2)<p></p></h3>
